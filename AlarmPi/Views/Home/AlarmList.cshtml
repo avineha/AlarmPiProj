@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Alarm List";
+}
+
+<h2>Alarm List</h2>
+<script type="text/javascript">
+   
+    $(document).ready(function () {
+      
+      
+        $('#AlarmTableContainer').jtable({
+            title: 'The Alarm List',
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            actions: {
+                listAction: '/Home/AlarmLists',
+                createAction: '/Home/CreateAlarmClock'
+            },
+            fields: {
+                AlarmId: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                AlarmDesc: {
+                    title: 'Alarm Title',
+                    type: 'textarea',
+                },
+               
+               
+                AlarmDays: {
+                    title: 'Alarm Days',
+                    width: '15%',
+                    options: "/Home/LoadWeek",
+                    list: true
+                   
+                },
+                AlarmTime: {
+                    title: 'Alarm Time',
+                    width: '15%',
+
+                    sorting: false //This column is not sortable!
+                },
+                IsActive: {
+                    title: 'Status',
+                    width: '12%',
+                    type: 'checkbox',
+                    values: { 'false': 'In Active', 'true': 'Active' },
+
+
+                }
+              
+               
+            }
+        });
+
+        //Load student list from server
+        $('#AlarmTableContainer').jtable('load');
+    });
+  
+</script>
+
+<div id="AlarmTableContainer"></div>

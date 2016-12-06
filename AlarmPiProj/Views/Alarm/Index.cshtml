@@ -1,0 +1,57 @@
+﻿@model IEnumerable<AlarmPiProj.Models.AlarmEntity>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AlarmTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlarmDays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlarmDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlarmTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlarmDays)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlarmDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AlarmId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AlarmId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AlarmId })
+        </td>
+    </tr>
+}
+
+</table>
